@@ -7,42 +7,42 @@ Quick dirty basic alternatives to the native NestJS implementation of Kafka cons
 $ yarn install
 ```
 
+Run the dockerized kafka 
+```
+docker compose up -d
+```
+
+Create the sample topics
+
+```
+docker exec kafka kafka-topics --create \
+  --topic salesforce-opportunity \
+  --bootstrap-server localhost:9092 \
+  --partitions 1 \
+  --replication-factor 1
+
+  docker exec kafka kafka-topics --create \
+  --topic salesforce-contract \
+  --bootstrap-server localhost:9092 \
+  --partitions 1 \
+  --replication-factor 1
+```
+
+
 ## Running the app
 
 ```bash
-# development
-$ yarn run start
+# Run the rdkafka wrapper
+$ yarn start:kafka:rdkafka:consumer
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+# Run the confluent wrapper
+$ yarn start:kafka:confluent:consumer
 ```
 
 ## Test
 
 ```bash
-# unit tests
-$ yarn run test
+# Publish sample messages
 
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+node publish.js
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
