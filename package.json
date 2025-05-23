@@ -12,6 +12,8 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "start:kafka:confluent:consumer": "nest start --watch -- --kafkaLibrary=confluent",
+    "start:kafka:rdkafka:consumer": "nest start --watch -- --kafkaLibrary=rdkafka",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",

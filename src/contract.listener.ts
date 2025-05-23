@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
 
-@Injectable()
+@Controller()
 export class ContractListener {
   @EventPattern('salesforce-contract')
   handleSalesforceContract(@Payload() message: any) {
